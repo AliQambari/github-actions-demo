@@ -19,4 +19,14 @@ jobs:
       run: pip install flake8
 
     - name: Run flake8
-      run: flake8 .
+      run: |
+       git fetch origin main
+       FILES=$(git diff --name-only origin/main | grep '\.py$' || true)
+       if [ -n "$FILES" ]; then
+           echo "🔍 Running flake8 on changed files:"
+           echo "$FILES"
+           flake8 $FILES
+        else
+              echo "✅ No Python files changed."
+       fi
+ 
