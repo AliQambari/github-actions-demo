@@ -29,4 +29,10 @@ jobs:
         else
               echo "✅ No Python files changed."
        fi
+
+       - name: Run flake8 and save output
+       run: |
+       mkdir -p reports
+       flake8 . > reports/flake8_report.txt || true
+
  
