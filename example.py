@@ -1,3 +1,2 @@
-def hello():
-    print("Hello world")
-print("Oops")  # بدون indentation!
+def test():
+print("no indent")
